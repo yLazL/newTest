@@ -1,0 +1,101 @@
+/*---数据编辑页面标题单元格---*/
+.Td_t2
+{
+    padding-left: 3px;
+    background: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    vertical-align: middle;
+    height: 23px;
+    font-size:12px;
+    white-space: normal;
+    word-break: break-all;
+}
+.Td_t3
+{
+    padding-left: 3px;
+    background: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    vertical-align: middle;
+    height: 23px;
+    font-size:12px;
+    white-space: normal;
+    word-break: keep-all;
+}
+.Td_t
+{
+    padding-left: 3px;
+    background: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    vertical-align: middle;
+    height: 23px;
+    width: 120px;
+    font-size:12px;
+    white-space:normal;
+    word-break: break-all;
+}
+.Td_t1
+{
+    padding-left: 3px;
+    background: #F2F2F2;
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    vertical-align: middle;
+    height: 23px;
+    font-size:12px;
+    white-space: normal;
+    word-break: break-all;
+}
+
+/*---数据编辑页面内容单元格---*/
+.Td_c
+{
+    background: white;
+    border-bottom: 1px solid #DADADA;
+    vertical-align: middle;
+   	white-space:nowrap;
+    font-size:12px;
+}
+.Td_c2
+{
+    background: white;
+    border-bottom: 1px solid #DADADA;
+    vertical-align: middle;
+    white-space: normal;
+    font-size:12px;
+    word-break:break-all;
+}
+.Td_c1
+{
+    background: white;
+    border-bottom: 1px solid #DADADA;
+    vertical-align: middle;    
+    font-size:12px;
+}
+.page_title
+{
+	vertical-align: center;
+    font-size:20px;
+    height:40px;
+    font-weight:bold;
+    text-align:center;
+}
+.table_input
+{
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+    font:12px;
+    height:30px;
+    padding:1px;
+}
+.xjqbox{ 
+	border: 1px solid red; 
+    font:12px/1.5 宋体,arial,tahoma;
+    height:30px;
+	background: url(images/validatebox_warning.png) no-repeat right 1px #FFFFEE;
+	}
+.xjqsel{ 
+	border: 1px solid red; 
+	}

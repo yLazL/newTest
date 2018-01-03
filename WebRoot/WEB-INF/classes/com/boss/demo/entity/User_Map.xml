@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+<!-- 通过typeAlias使得我们在下面使用Student实体类的时候不需要写包名 -->
+<typeAlias alias="User" type="com.boss.demo.entity.User" />
+<resultMap id="userMap" class="User">
+	<result property="userID" column="USERID"/>
+	<result property="accountNo" column="ACCOUNTNO"/>
+	<result property="password" column="password"/>
+	<result property="name" column="name"/>
+	<result property="email" column="email"/>
+	<result property="phone" column="phone"/>
+</resultMap>
+<!-- 用户添加 -->
+
+<insert id="addUser" parameterClass="User">
+	
+	insert into t_user(
+		USERID,ACCOUNTNO,password,
+		name,email,phone	 
+	)
+	values(
+		id_seq.nextval,#accountNo#,#password#,
+		#name#,#email#,#phone#
+	)
+</insert>
+<!-- 删除用户 -->
+<delete id="deleteUserById" parameterClass="Integer">
+delete from t_user where USERID=#userID#
+</delete>
+<!-- 修改用户信息 -->
+<update id="updateUser" parameterClass="User">
+update t_user set
+name=#name#,email=#email#,phone=#phone#,password=#password# where USERID=#userID#
+</update>
+
+<!-- 查询 -->
+<select id="selectAllUser" parameterClass="HashMap" resultClass="User">
+select t.USERID,t.ACCOUNTNO,t.password,
+		t.name,t.email,t.phone from (select * from t_user limit #start#,#end#
+		<isNotEmpty property="accountNo">
+		and ACCOUNTNO like '%$accountNo$%'
+		</isNotEmpty>
+	
+		<isNotEmpty property="name">
+		and name like '%$name$%'
+		</isNotEmpty>
+		) t  
+
+</select>
+
+<select id="selectUserById" parameterClass="Integer" resultClass="User">
+select * from t_user where USERID=#userID#
+</select>
+
+<select id="selectUsersByName" parameterClass="HashMap" resultClass="HashMap">
+
+select t.USERID,t.ACCOUNTNO,t.password,
+		t.name,t.email,t.phone from (select t.*,ROWNUM RN from t_user t) t where t.name like '%$name$%' and RN&gt;#start# and RN&lt;=#end# 
+		
+</select>
+<select id="selectUsersByAccountNo" parameterClass="HashMap" resultClass="HashMap">
+select t.USERID,t.ACCOUNTNO,t.password,
+		t.name,t.email,t.phone from (select t.*,ROWNUM RN from t_user t) t where RN&gt;#start# and RN&lt;=#end# and t.ACCOUNTNO like '%$accountNo$%'
+		
+</select>
+<select id="selectUsersByName_No" parameterClass="HashMap" resultClass="HashMap">
+select t.USERID,t.ACCOUNTNO,t.password,
+		t.name,t.email,t.phone from (select t.*,ROWNUM RN from t_user t) t where RN&gt;#start# and RN&lt;=#end# and (t.name like '%$name$%' or ACCOUNTNO like '%$accountNo$%')
+
+		
+</select>
+<select id="selectUserByNo" parameterClass="String" resultClass="User">
+select * from t_user where ACCOUNTNO=#accountNo#
+</select>
+<select id="selectPwdByNo" parameterClass="String" resultClass="String">
+select password from t_user where ACCOUNTNO=#accountNo#
+</select>
+
+<select id="selectUserCount" parameterClass="User"  resultClass="Integer">
+select count(*) from t_user where 1=1
+	<isNotEmpty property="accountNo">
+		and ACCOUNTNO like '%$accountNo$%'
+	</isNotEmpty>
+	
+	<isNotEmpty property="name">
+		and name like '%$name$%'
+	</isNotEmpty>
+</select>
+
+</sqlMap>

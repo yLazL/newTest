@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+     <!-- 登录 -->
+ 	 <package name="loginPack" namespace="/login" extends="demo-default">
+        <action name="login" class="LoginAction" method="toLogin">
+            <result name="login">/page/login.jsp</result>
+            <result  type="json">
+            	<param name="root">result</param>
+            </result>
+        </action>
+        <action name="check" class="LoginAction" method="check">
+            <result name="successs">/page/adminShop.html</result>
+            <result  type="json">
+            	<param name="root">result</param>
+            </result>
+        </action>
+    </package>
+    
+    <!--用户管理 -->
+     <package name="userMgr" namespace="/user" extends="demo-default">
+        <action name="toMainPage" class="UserAction" method="toMainPage">
+        	<!-- <result name="back">/page/login.jsp</result> -->
+            <result name="main">/page/adminShop.html</result>
+            <result  type="json"> </result>
+           
+        </action>
+    </package>
+    
+   <!--上传文件管理 -->
+      <package name="uploadManage" namespace="/upload" extends="demo-default">
+        <action name="jiexiExcel" class="PoiExcelAction" method="jiexiExcel">
+        	<result name="success">/page/login.jsp</result>
+            
+           
+        </action>
+    </package> 
+     
+
+</struts>

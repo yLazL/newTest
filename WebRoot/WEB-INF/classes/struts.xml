@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+ 
+
+    <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+    <constant name="struts.devMode" value="true" /> 
+    <constant name="struts.action.extension" value="do"/>  <!--所有以*.do结尾的请求全部归struts处理  ，如果没有显式指定action识别后缀，默认就是action, 比如toInput.action-->
+    <constant name="struts.ui.theme" value="simple"></constant> <!-- struts2将自动帮程序员生成网页，提供了多种生成模版 -->
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
+    <constant name="struts.objectFactory" value="spring" />       <!-- 告诉struts不再自行创建action实例。而是到Spring里去取action实例 -->
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+
+    <!-- package是若干个拥有相关功能的action的群组     -->
+     <package name="demo-default" namespace="/" extends="struts-default,json-default">  </package>
+     
+     
+	 <include file="struts-action.xml"/> 
+     <!-- <include file="user.xml"/> 
+     <include file="login.xml"/>  -->
+     
+     
+
+</struts>
