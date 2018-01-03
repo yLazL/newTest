@@ -46,7 +46,7 @@ public class LoginAction extends BaseAction{
 				Map<String,Object>  session =  ActionContext.getContext().getSession();
 				session.put("ACCOUNTNO", user.getAccountNo());
 			}else{
-				throw new Exception("ÕËºÅ»òÃÜÂë´íÎó£¬ÇëÖØĞÂÊäÈë£¡");
+				throw new Exception("è´¦å·æˆ–å¯†ç ä¸æ­£ç¡®ï¼Œè¯·é‡æ–°è¾“å…¥ï¼");
 			}
 				
 		} catch (Exception e) {
